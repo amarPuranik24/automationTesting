@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "20ec48aa-ceef-4c49-bba4-0ea79d6c148f",
+		"name": "crawford",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test Case 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"//verify first name returned in get api is 'Eve'.\r",
+							"pm.test(\"Verify first name is 'Eve'\",function(){\r",
+							"pm.expect(jsonData.data.first_name).to.eql(\"Eve\");\r",
+							"}\r",
+							")\r",
+							"\r",
+							"//verify last name returned in get api is 'Holt'.\r",
+							"pm.test(\"Verify last name is 'Holt'\",function(){\r",
+							"pm.expect(jsonData.data.last_name).to.eql(\"Holt\");\r",
+							"}\r",
+							")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/4",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"//here asked to verify that first name is 'sergio'. But api shows first name as 'Tracey'\r",
+							"//so wrote test to verify that first name is 'Tracey'.\r",
+							"pm.test(\"Verify first name is 'Tracey'\",function(){\r",
+							"pm.expect(jsonData.data.first_name).to.eql(\"Tracey\");\r",
+							"}\r",
+							")\r",
+							"\r",
+							"//Verify last name returned is Ramos.\r",
+							"pm.test(\"Verify last name is 'Ramos'\",function(){\r",
+							"pm.expect(jsonData.data.last_name).to.eql(\"Ramos\");\r",
+							"}\r",
+							")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/6",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Status code is 404.\r",
+							"pm.test(\"Verify Status code is 404\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/23",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"23"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
